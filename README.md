@@ -21,3 +21,8 @@
         - https://github.com/shimabukuromeg/sample0920/commit/76580d686e7eb118abf60bf17351b69ca16cbd9b
      - Tab
         - https://github.com/shimabukuromeg/sample0920/commit/5c56463e510598abb140dc546f186e73727d2e20
+
+- 各コンポーネントに色々optionを渡して動きや表示を指定できる
+  - NavigationContainerにonStateChangeというpropsが渡せる。これは画面遷移のたびに実行され、引数として state を受け取るやつ
+  - XXX.ScreenとかXXX.Navigatorにtitleを指定して画面名決めれたりする
+  - 他にも色々ある
