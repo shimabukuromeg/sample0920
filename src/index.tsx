@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {useNavigation, NavigationContainer} from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,12 +11,43 @@ const styles = StyleSheet.create({
   },
 });
 
-function Index() {
+function Main() {
+  const {navigate} = useNavigation();
   return (
-    <View style={styles.container}>
-      <Text>hello, world</Text>
+    <View>
+      <Text>Main</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigate('Sub');
+        }}>
+        <Text>go to sub</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
-export default Index;
+function Sub() {
+  return (
+    <View style={styles.container}>
+      <Text>Sub</Text>
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
+function StackNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Main" component={Main} />
+      <Stack.Screen name="Sub" component={Sub} />
+    </Stack.Navigator>
+  );
+}
+
+export default function () {
+  return (
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
+  );
+}
