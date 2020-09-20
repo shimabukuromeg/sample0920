@@ -11,3 +11,6 @@
    - Drawer
    - Tab
    
+- createXXXNavigator()で、インスタンスを作って、ルーティングを定義する
+- XXX.NavigatorとXXXX.Screenで画面を定義する。（XXXX.ScreenをXXX.Navigatorで囲む。画面遷移のための構造を作る）
+- 最後に、ルーティングを束ねるための、NavigationContainerで、作ったルーティングを囲ってあげる。
