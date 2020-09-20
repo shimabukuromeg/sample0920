@@ -1,7 +1,11 @@
 import React from 'react';
+import {
+  NavigationContainer,
+  useNavigation,
+  DrawerActions,
+} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {useNavigation, NavigationContainer} from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,35 +16,43 @@ const styles = StyleSheet.create({
 });
 
 function Main() {
+  const {dispatch} = useNavigation();
   return (
     <View style={styles.container}>
       <Text>Main</Text>
+      <TouchableOpacity onPress={() => dispatch(DrawerActions.openDrawer())}>
+        <Text>open drawer</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 function Sub() {
+  const {dispatch} = useNavigation();
   return (
     <View style={styles.container}>
       <Text>Sub</Text>
+      <TouchableOpacity onPress={() => dispatch(DrawerActions.openDrawer())}>
+        <Text>open drawer</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
-const Tab = createBottomTabNavigator();
-function TabNavigator() {
+const Drawer = createDrawerNavigator();
+function DrawerNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Main" component={Main} />
-      <Tab.Screen name="Sub" component={Sub} />
-    </Tab.Navigator>
+    <Drawer.Navigator>
+      <Drawer.Screen name="Main" component={Main} />
+      <Drawer.Screen name="Sub" component={Sub} />
+    </Drawer.Navigator>
   );
 }
 
 export default function () {
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <DrawerNavigator />
     </NavigationContainer>
   );
 }
